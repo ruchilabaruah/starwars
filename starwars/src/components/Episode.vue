@@ -1,9 +1,9 @@
 <template>
   <div>
     <div v-if="episode" class="episode">
-        <h3>{{ episode.fields.title }}</h3>
-        <p class="description">{{ episode.fields.opening_crawl }}</p>
-        <p>Directed by: {{ episode.fields.director }}</p>
+      <h3>{{ episode.fields.title }}</h3>
+      <p class="description">{{ episode.fields.opening_crawl }}</p>
+      <p>Directed by: {{ episode.fields.director }}</p>
     </div>
     <div v-else>No episode selected</div>
   </div>
@@ -24,12 +24,12 @@ export default {
 </script>
 <style scoped>
 .episode {
-    display: flex;
-    flex-direction: column;
-    align-items:flex-start;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
 }
 .description {
-    text-align: left;
+  text-align: left;
 }
 </style>

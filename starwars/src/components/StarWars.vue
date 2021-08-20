@@ -1,10 +1,18 @@
 <template>
   <div class="container">
-    <Episodes :list="starWars" @select="selectEpisode" />
-    <Episode :episode="episode" />
+    <TableOptimizer class="searhbox" @filter="searchEpisode" @sort="sortBy" />
+    <Episodes
+      class="episodes"
+      :list="starWars"
+      @select="selectEpisode"
+      :filter="filterText"
+      :sortBy="sortKey"
+    />
+    <Episode class="episode" :episode="episode" />
   </div>
 </template>
 <script lang="ts">
+import TableOptimizer from "./TableOptimizer.vue";
 import Episodes from "./Episodes.vue";
 import Episode from "./Episode.vue";
 /*
@@ -13,6 +21,7 @@ import Episode from "./Episode.vue";
 export default {
   name: "star-wars",
   components: {
+    TableOptimizer,
     Episodes,
     Episode,
   },
@@ -20,6 +29,8 @@ export default {
     return {
       starWars: [],
       episode: null,
+      filterText: null,
+      sortKey: null,
     };
   },
   methods: {
@@ -39,6 +50,14 @@ export default {
     selectEpisode(episode) {
       this.episode = episode ? episode : null;
     },
+    /** Table to be filtered based on this entered text*/
+    searchEpisode(value) {
+      this.filterText = value;
+    },
+    /** Table to be sorted based on sort by key selected */
+    sortBy(value) {
+      this.sortKey = value;
+    },
   },
   mounted() {
     this.getStarWarsList();
@@ -48,6 +67,17 @@ export default {
 <style lang="scss" scoped>
 .container {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+}
+.searchbox {
+  grid-row: 1;
+  grid-column: 1 / span 2;
+}
+.episodes {
+  grid-row: 2;
+  grid-column: 1;
+}
+.episode {
+  grid-row: 2;
+  grid-column: 2;
 }
 </style>

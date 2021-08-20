@@ -1,7 +1,7 @@
 <template>
   <div class="episodesContainer">
     <div
-      v-for="episode of list"
+      v-for="episode of filteredEpisodes"
       :key="episode.id"
       class="episode"
       @click="selectEpisode(episode)"
@@ -22,6 +22,70 @@ export default {
     list: {
       type: Array,
       default: () => [],
+    },
+    filter: {
+      type: String,
+      default: () => null,
+    },
+    sortBy: {
+      type: Object,
+      default: () => null,
+    },
+  },
+  computed: {
+    // First apply the filter, then sort the filtered list based on selected order
+    filteredEpisodes() {
+      const filteredList = this.list.filter((episode) => {
+        return this.filter
+          ? episode.fields.title
+              .toLowerCase()
+              .includes(this.filter.toLowerCase())
+          : episode;
+      });
+
+      if (
+        this.sortBy &&
+        this.sortBy.id == "episode" &&
+        this.sortBy.order == "-"
+      ) {
+        // Descending order of episodes
+        filteredList.sort(
+          (ep1, ep2) => ep2.fields.episode_id - ep1.fields.episode_id
+        );
+      } else if (
+        this.sortBy &&
+        this.sortBy.id == "episode" &&
+        this.sortBy.order == "+"
+      ) {
+        // Ascending order of episodes
+        filteredList.sort(
+          (ep1, ep2) => ep1.fields.episode_id - ep2.fields.episode_id
+        );
+      } else if (
+        this.sortBy &&
+        this.sortBy.id == "date" &&
+        this.sortBy.order == "-"
+      ) {
+        // Order by latest movies
+        filteredList.sort(
+          (ep1, ep2) =>
+            new Date(ep2.fields.release_date).getTime() -
+            new Date(ep1.fields.release_date).getTime()
+        );
+      } else if (
+        this.sortBy &&
+        this.sortBy.id == "date" &&
+        this.sortBy.order == "+"
+      ) {
+        // Order by oldest movies
+        filteredList.sort(
+          (ep1, ep2) =>
+            new Date(ep1.fields.release_date).getTime() -
+            new Date(ep2.fields.release_date).getTime()
+        );
+      }
+      console.log(filteredList);
+      return filteredList;
     },
   },
   methods: {
