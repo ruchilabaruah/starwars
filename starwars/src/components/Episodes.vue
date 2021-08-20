@@ -6,6 +6,7 @@
       class="episode"
       @click="selectEpisode(episode)"
     >
+      <div class="id">EPISODE {{ episode.fields.episode_id }}</div>
       <div class="title">{{ episode.fields.title }}</div>
       <div class="releasedate">{{ episode.fields.release_date }}</div>
     </div>
@@ -42,6 +43,9 @@ export default {
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
+}
+.id {
+    flex-basis: 200px;
 }
 .title {
   flex-basis: 400px;

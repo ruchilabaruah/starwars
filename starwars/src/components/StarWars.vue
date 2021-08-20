@@ -49,7 +49,7 @@ export default {
 <style scoped>
 .container {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 2fr 1fr;
   /* background-color: red; */
 }
 </style>
