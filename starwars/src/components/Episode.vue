@@ -1,6 +1,10 @@
 <template>
   <div>
-    <div v-if="episode">{{ episode.fields.title }}</div>
+    <div v-if="episode" class="episode">
+        <h3>{{ episode.fields.title }}</h3>
+        <p class="description">{{ episode.fields.opening_crawl }}</p>
+        <p>Directed by: {{ episode.fields.director }}</p>
+    </div>
     <div v-else>No episode selected</div>
   </div>
 </template>
@@ -18,4 +22,14 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+.episode {
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    padding: 20px;
+}
+.description {
+    text-align: left;
+}
+</style>
