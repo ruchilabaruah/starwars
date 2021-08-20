@@ -32,7 +32,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .episodesContainer {
   border-right: 1px solid #d3d3d3;
 }
@@ -40,17 +40,17 @@ export default {
   display: flex;
   height: 50px;
   border-bottom: 1px solid #d3d3d3;
-  justify-content: flex-start;
+  text-align: left;
   align-items: center;
   cursor: pointer;
-}
-.id {
+  .id {
     flex-basis: 200px;
-}
-.title {
-  flex-basis: 400px;
-}
-.releasedate {
-  flex-basis: 200px;
+  }
+  .title {
+    flex-basis: 400px;
+  }
+  .releasedate {
+    flex-basis: 200px;
+  }
 }
 </style>

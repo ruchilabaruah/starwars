@@ -45,11 +45,9 @@ export default {
   },
 };
 </script>
-<!--TODO: Use SCSS if needed -->
-<style scoped>
+<style lang="scss" scoped>
 .container {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  /* background-color: red; */
 }
 </style>
