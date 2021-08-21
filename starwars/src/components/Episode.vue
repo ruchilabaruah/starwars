@@ -5,7 +5,9 @@
       <p class="description">{{ episode.fields.opening_crawl }}</p>
       <p>Directed by: {{ episode.fields.director }}</p>
     </div>
-    <div v-else>No episode selected</div>
+    <div v-else>
+      <h4>No episode selected</h4>
+    </div>
   </div>
 </template>
 <script>

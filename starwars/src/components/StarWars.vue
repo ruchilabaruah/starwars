@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <TableOptimizer class="searhbox" @filter="searchEpisode" @sort="sortBy" />
+    <TableOptimizer class="searchbox" @filter="searchEpisode" @sort="sortBy" />
     <Episodes
       class="episodes"
       :list="starWars"
@@ -67,17 +67,17 @@ export default {
 <style lang="scss" scoped>
 .container {
   display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 .searchbox {
   grid-row: 1;
-  grid-column: 1 / span 2;
+  grid-column: 1 / 3;
 }
 .episodes {
   grid-row: 2;
-  grid-column: 1;
+  grid-column: 1 / 2;
 }
 .episode {
   grid-row: 2;
-  grid-column: 2;
 }
 </style>

@@ -63,7 +63,7 @@ export default {
         );
       } else if (
         this.sortBy &&
-        this.sortBy.id == "date" &&
+        this.sortBy.id == "year" &&
         this.sortBy.order == "-"
       ) {
         // Order by latest movies
@@ -74,7 +74,7 @@ export default {
         );
       } else if (
         this.sortBy &&
-        this.sortBy.id == "date" &&
+        this.sortBy.id == "year" &&
         this.sortBy.order == "+"
       ) {
         // Order by oldest movies
@@ -97,24 +97,29 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+$secondaryColor: #d3d3d3;
+$baseSize: 4px;
+
 .episodesContainer {
-  border-right: 1px solid #d3d3d3;
+  border-right: 1px solid $secondaryColor;
+  height: 100vh;
 }
 .episode {
   display: flex;
   height: 50px;
-  border-bottom: 1px solid #d3d3d3;
+  border-bottom: 1px solid $secondaryColor;
   text-align: left;
   align-items: center;
   cursor: pointer;
   .id {
-    flex-basis: 200px;
+    flex-basis: $baseSize * 50;
+    color: $secondaryColor;
   }
   .title {
-    flex-basis: 400px;
+    flex-basis: $baseSize * 100;
   }
   .releasedate {
-    flex-basis: 200px;
+    flex-basis: $baseSize * 50;
   }
 }
 </style>
